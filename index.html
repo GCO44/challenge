@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="iscm">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +32,7 @@
 </head>
 
 
-<body class="bg-n-light-gray">
+<body class="bg-n-light-gray" ng-app="iscm">
 
 <div class="container mt-3" ng-controller="iscm" ng-init="load()">
 
@@ -46,7 +46,7 @@
           <!-- User -->
           <div class="card-title row row-cols-auto my-2 ">
             <div class="position-relative">
-                <img ng-src="{{X.user.image.png}}" width="35" height="35">
+                <img ng-src="{{X.user.image.png}}" width="35" height="35" alt="user"/>
                 <span class="position-absolute top-10 start-20 translate-middle fw-bolder text-n-white bg-n-button-reply rounded-circle p-1" ng-show="X.user.username == currentUser.username" style="font-size: 0.6rem;">You</span>
                 <div class="fw-bolder text-n-dark-blue text-break d-inline-block mx-3 L0-ReplyingTo-{{KX}}-{{KX}}">{{X.user.username}}</div>
                 <div class="text-n-grayish-Blue text-break d-inline-block mx-3" am-time-ago="X.createdAt"></div> 
@@ -77,15 +77,15 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                     <div class="input-group input-group-sm justify-content-center" >
-                      <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L0',KX,KX,'+')"><img src="images/icon-plus.svg"></span>
+                      <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L0',KX,KX,'+')"><img src="images/icon-plus.svg" alt="plus"/></span>
                       <span class="input-group-text border border-p-light-grayish-blue text-n-button-reply L0-Score-{{KX}}-{{KX}}">{{X.score}}</span>
-                      <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L0',KX,KX,'-')"><img src="images/icon-minus.svg"></span>
+                      <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L0',KX,KX,'-')"><img src="images/icon-minus.svg" alt="minus"/></span>
                     </div>
               </div>
               <div class="col-12 col-sm-6 text-center">
-                <button class="btn btn-n-white" ng-show="X.user.username == currentUser.username" ng-click="Delete('L0',KX,KX)"><div class="text-danger fw-bold"><img src="images/icon-delete.svg"> Delete</div></button>
-                <button class="btn btn-n-white" ng-show="X.user.username == currentUser.username" ng-click="Edit('L0',KX,KX)"><div class="text-n-button-reply fw-bold"><img src="images/icon-edit.svg"> Edit</div></button>
-                <button class="btn btn-n-white" ng-show="X.user.username != currentUser.username" ng-click="Reply('L0',KX,KX)"><div class="text-n-button-reply fw-bold"><img src="images/icon-reply.svg"> Reply</div></button>
+                <button class="btn btn-n-white" ng-show="X.user.username == currentUser.username" ng-click="Delete('L0',KX,KX)"><div class="text-danger fw-bold"><img src="images/icon-delete.svg"  alt="delete"/> Delete</div></button>
+                <button class="btn btn-n-white" ng-show="X.user.username == currentUser.username" ng-click="Edit('L0',KX,KX)"><div class="text-n-button-reply fw-bold"><img src="images/icon-edit.svg"  alt="edit"/> Edit</div></button>
+                <button class="btn btn-n-white" ng-show="X.user.username != currentUser.username" ng-click="Reply('L0',KX,KX)"><div class="text-n-button-reply fw-bold"><img src="images/icon-reply.svg" alt="reply"/> Reply</div></button>
               </div>
             </div>
           </div>
@@ -107,7 +107,7 @@
               <!-- User -->
               <div class="card-title row row-cols-auto my-2 ">
                 <div class="position-relative">
-                    <img  ng-src="{{Y.user.image.png}}" width="35" height="35">
+                    <img  ng-src="{{Y.user.image.png}}" width="35" height="35" alt="user"/>
                     <span class="position-absolute top-10 start-20 translate-middle fw-bolder text-n-white bg-n-button-reply rounded-circle p-1" ng-show="Y.user.username == currentUser.username" style="font-size: 0.6rem;">You</span>
                     <div class="fw-bolder text-n-dark-blue text-break d-inline-block mx-3 L1-ReplyingTo-{{KX}}-{{KY}}">{{Y.user.username}}</div>
                     <div class="text-n-grayish-Blue text-break d-inline-block mx-3" am-time-ago="Y.createdAt"></div> 
@@ -138,15 +138,15 @@
                 <div class="row">
                   <div class="col-12 col-sm-6">
                         <div class="input-group input-group-sm justify-content-center" >
-                          <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L1',KX,KY,'+')"><img src="images/icon-plus.svg"></span>
+                          <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L1',KX,KY,'+')"><img src="images/icon-plus.svg" alt="plus"/></span>
                           <span class="input-group-text border border-p-light-grayish-blue text-n-button-reply L1-Score-{{KX}}-{{KY}}">{{Y.score}}</span>
-                          <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L1',KX,KY,'-')"><img src="images/icon-minus.svg"></span>
+                          <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L1',KX,KY,'-')"><img src="images/icon-minus.svg"  alt="minus"/></span>
                         </div>
                   </div>
                   <div class="col-12 col-sm-6 text-center">
-                          <button class="btn btn-n-white"  ng-show="Y.user.username == currentUser.username" ng-click="Delete('L1',KX,KY)"><div class="text-danger fw-bold"><img src="images/icon-delete.svg"> Delete</div></button>
-                          <button class="btn btn-n-white" ng-show="Y.user.username == currentUser.username" ng-click="Edit('L1',KX,KY)"><div class="text-n-button-reply fw-bold"><img src="images/icon-edit.svg"> Edit</div></button>
-                          <button class="btn btn-n-white" ng-show="Y.user.username != currentUser.username" ng-click="Reply('L1',KX,KY)"><div class="text-n-button-reply fw-bold"><img src="images/icon-reply.svg"> Reply</div></button>
+                          <button class="btn btn-n-white"  ng-show="Y.user.username == currentUser.username" ng-click="Delete('L1',KX,KY)"><div class="text-danger fw-bold"><img src="images/icon-delete.svg" alt="delete"/> Delete</div></button>
+                          <button class="btn btn-n-white" ng-show="Y.user.username == currentUser.username" ng-click="Edit('L1',KX,KY)"><div class="text-n-button-reply fw-bold"><img src="images/icon-edit.svg" alt="edit"/> Edit</div></button>
+                          <button class="btn btn-n-white" ng-show="Y.user.username != currentUser.username" ng-click="Reply('L1',KX,KY)"><div class="text-n-button-reply fw-bold"><img src="images/icon-reply.svg" alt="reply"/> Reply</div></button>
                   </div>
                 </div>
               </div>
@@ -169,7 +169,7 @@
           <div class="form-floating">
             <textarea class="form-control border border-p-light-grayish-blue fw-lighter L2-Textarea" placeholder="Add a comment..." ng-model="L2_Reply" ng-init="L2_Reply=''"></textarea>
             <label class="text-n-grayish-Blue text-break mb-2">
-              <img class="mx-2" ng-src="{{currentUser.image.png}}" width="25" height="25"> New comment...
+              <img class="mx-2" ng-src="{{currentUser.image.png}}" width="25" height="25"  alt="user"/> New comment...
             </label>
           </div>
             <div class="d-flex justify-content-end">
