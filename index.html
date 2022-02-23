@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="iscm">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="./css/styles.css" rel="stylesheet">
+  <script src="./library/bootstrap-5.0.2/dist/js/bootstrap.bundle.min.js"></script>  
+
+  <!-- AngularJS -->
+  <script src = "https://ajaX.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+  <!-- js module -->
+  <script src="./js/module/module.js"></script>    
+
+  <!-- js controller -->
+  <script src="./js/controller/indeX.js"></script> 
+
+  <!-- js factorie -->
+  <script src="./js/factorie/indeX.js"></script>  
+
+  <!-- Moment js + Angular Moment -->
+  <script src="./library/moment-2-29-1/moment.js"></script>
+  <script src="./library/angular-moment/angular-moment.js"></script>  
+
+</head>
+
+
+<body class="bg-n-light-gray">
+
+<div class="container mt-3" ng-controller="iscm" ng-init="load()">
+
+  <div class="row g-0" ng-repeat="(KX,X) in comments track by $index">
+
+    <div class="col-12"> 
+
+      <div class="card my-1 Small shadow">
+        <div class="card-body">
+
+          <!-- User -->
+          <div class="card-title row row-cols-auto my-2 ">
+            <div class="position-relative">
+                <img ng-src="{{X.user.image.png}}" width="35" height="35">
+                <span class="position-absolute top-10 start-20 translate-middle fw-bolder text-n-white bg-n-button-reply rounded-circle p-1" ng-show="X.user.username == currentUser.username" style="font-size: 0.6rem;">You</span>
+                <div class="fw-bolder text-n-dark-blue text-break d-inline-block mx-3 L0-ReplyingTo-{{KX}}-{{KX}}">{{X.user.username}}</div>
+                <div class="text-n-grayish-Blue text-break d-inline-block mx-3" am-time-ago="X.createdAt"></div> 
+              </div>
+          </div>
+
+          <!-- Comment -->
+          <div class="card-text text-n-grayish-Blue">
+            <p class="L0-Comment-{{KX}}-{{KX}}">{{X.content}}</p> 
+          </div>
+
+          <!-- Textarea -->
+          <div class="card-text my-2 L0-CardComment-{{KX}}-{{KX}} d-none">
+            <div class="row">
+              <div class="form-floating">
+                <textarea class="form-control border border-p-light-grayish-blue fw-lighter L0-Textarea-{{KX}}-{{KX}}" placeholder="Add a comment..." ng-model="L0_Reply[KX_KX]" ng-init="L0_Reply[KX_KX]=''"></textarea>
+                <label class="text-n-grayish-Blue">Add a comment...</label>
+              </div>
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-sm fw-bolder text-n-white btn-secondary my-2 mx-1" ng-click="ExitReply('L0',KX,KX)">CLOSE</button>
+                <button class="btn btn-sm fw-bolder text-n-white btn-n-button-reply my-2 mx-1" ng-click="SendReplyEdit('L0',KX,KX)">SEND</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Options -->
+          <div class="card-text my-2 L0-Option-{{KX}}-{{KX}}">
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                    <div class="input-group input-group-sm justify-content-center" >
+                      <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L0',KX,KX,'+')"><img src="images/icon-plus.svg"></span>
+                      <span class="input-group-text border border-p-light-grayish-blue text-n-button-reply L0-Score-{{KX}}-{{KX}}">{{X.score}}</span>
+                      <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L0',KX,KX,'-')"><img src="images/icon-minus.svg"></span>
+                    </div>
+              </div>
+              <div class="col-12 col-sm-6 text-center">
+                <button class="btn btn-n-white" ng-show="X.user.username == currentUser.username" ng-click="Delete('L0',KX,KX)"><div class="text-danger fw-bold"><img src="images/icon-delete.svg"> Delete</div></button>
+                <button class="btn btn-n-white" ng-show="X.user.username == currentUser.username" ng-click="Edit('L0',KX,KX)"><div class="text-n-button-reply fw-bold"><img src="images/icon-edit.svg"> Edit</div></button>
+                <button class="btn btn-n-white" ng-show="X.user.username != currentUser.username" ng-click="Reply('L0',KX,KX)"><div class="text-n-button-reply fw-bold"><img src="images/icon-replY.svg"> Reply</div></button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+
+  
+
+      <div class="row g-0 justify-content-end" ng-repeat="(KY,Y) in X.replies track by $index"> 
+
+        <div class="col-10 offset-2">
+
+          <div class="card my-1 Small shadow">
+            <div class="card-body">
+
+              <!-- User -->
+              <div class="card-title row row-cols-auto my-2 ">
+                <div class="position-relative">
+                    <img  ng-src="{{Y.user.image.png}}" width="35" height="35">
+                    <span class="position-absolute top-10 start-20 translate-middle fw-bolder text-n-white bg-n-button-reply rounded-circle p-1" ng-show="Y.user.username == currentUser.username" style="font-size: 0.6rem;">You</span>
+                    <div class="fw-bolder text-n-dark-blue text-break d-inline-block mx-3 L1-ReplyingTo-{{KX}}-{{KY}}">{{Y.user.username}}</div>
+                    <div class="text-n-grayish-Blue text-break d-inline-block mx-3" am-time-ago="Y.createdAt"></div> 
+                  </div>
+              </div>
+
+              <!-- Comment -->
+              <div class="card-text text-n-grayish-Blue">
+                <p class="L1-Comment-{{KX}}-{{KY}}">{{Y.content}}</p> 
+              </div>
+
+              <!-- Textarea -->
+              <div class="card-text my-2 L1-CardComment-{{KX}}-{{KY}} d-none">
+                <div class="row">
+                  <div class="form-floating">
+                    <textarea class="form-control border border-p-light-grayish-blue fw-lighter L1-Textarea-{{KX}}-{{KY}}" placeholder="{{L1_label}}" ng-model="L1_Reply[KX_KY]" ng-init="L1_Reply[KX_KY]=''"></textarea>
+                    <label class="text-n-grayish-Blue"><span ng-if="Y.user.username == currentUser.username ? L1_label='Change your comment...':L1_label='Add a comment...'">{{L1_label}}</span></label>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <button class="btn btn-sm fw-bolder text-n-white btn-secondary my-2 mx-1" ng-click="ExitReply('L1',KX,KY)">CLOSE</button>
+                    <button class="btn btn-sm fw-bolder text-n-white btn-n-button-reply my-2 mx-1" ng-click="SendReplyEdit('L1',KX,KY)">SEND</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Options -->
+              <div class="card-text my-2 L1-Option-{{KX}}-{{KY}}">
+                <div class="row">
+                  <div class="col-12 col-sm-6">
+                        <div class="input-group input-group-sm justify-content-center" >
+                          <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L1',KX,KY,'+')"><img src="images/icon-plus.svg"></span>
+                          <span class="input-group-text border border-p-light-grayish-blue text-n-button-reply L1-Score-{{KX}}-{{KY}}">{{Y.score}}</span>
+                          <span class="input-group-text btn btn-n-light-gray border border-p-light-grayish-blue" ng-click="Score('L1',KX,KY,'-')"><img src="images/icon-minus.svg"></span>
+                        </div>
+                  </div>
+                  <div class="col-12 col-sm-6 text-center">
+                          <button class="btn btn-n-white"  ng-show="Y.user.username == currentUser.username" ng-click="Delete('L1',KX,KY)"><div class="text-danger fw-bold"><img src="images/icon-delete.svg"> Delete</div></button>
+                          <button class="btn btn-n-white" ng-show="Y.user.username == currentUser.username" ng-click="Edit('L1',KX,KY)"><div class="text-n-button-reply fw-bold"><img src="images/icon-edit.svg"> Edit</div></button>
+                          <button class="btn btn-n-white" ng-show="Y.user.username != currentUser.username" ng-click="Reply('L1',KX,KY)"><div class="text-n-button-reply fw-bold"><img src="images/icon-replY.svg"> Reply</div></button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+  </div>  
+
+
+  <!-- currentUser -->
+  <div class="card my-1 Small shadow mb-5 L2-CurrentUser">
+    <div class="card-body">
+      <div class="card-text">
+        <div class="row">
+          <div class="form-floating">
+            <textarea class="form-control border border-p-light-grayish-blue fw-lighter L2-Textarea" placeholder="Add a comment..." ng-model="L2_Reply" ng-init="L2_Reply=''"></textarea>
+            <label class="text-n-grayish-Blue text-break mb-2">
+              <img class="mx-2" ng-src="{{currentUser.image.png}}" width="25" height="25"> New comment...
+            </label>
+          </div>
+            <div class="d-flex justify-content-end">
+            <button class="btn btn-sm fw-bolder text-n-white btn-n-button-reply my-2" ng-click="SendNewComment('L2')">SEND</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalDeleteLabel">Delete comment</h5>
+        </div>
+        <div class="modal-body">
+          <p class="text-n-grayish-Blue">Are you sure you want to delete this comment ? This will remove the comment and can't be undone</p> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO, CANCEL</button>
+          <button type="button" class="btn btn-danger" ng-click="ConfirmDelete()">YES, DELETE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <div class="row row-cols-auto my-1 justify-content-center">
+    <div class="">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    </div>
+    <div class="">
+      Coded by <a href="https://github.com/GCO44/icsm">GCO44</a>.
+    </div>
+  </div>
+     
+
+
+</div>
+
+
+</body>
+</html>
