@@ -36,6 +36,10 @@
 
 <div class="container mt-3" ng-controller="iscm" ng-init="load()">
 
+  <header><!-- No header --></header>
+  
+  <main>
+
   <div class="row g-0" ng-repeat="(KX,X) in comments track by $index">
 
     <div class="col-12"> 
@@ -46,7 +50,7 @@
           <!-- User -->
           <div class="card-title row row-cols-auto my-2 ">
             <div class="position-relative">
-                <img ng-src="{{X.user.image.png}}" width="35" height="35" alt="user"/>
+                <img ng-src="{{X.user.image.png}}" width="35" height="35" alt="user-{{KX}}-{{KX}}"/>
                 <span class="position-absolute top-10 start-20 translate-middle fw-bolder text-n-white bg-n-button-reply rounded-circle p-1" ng-show="X.user.username == currentUser.username" style="font-size: 0.6rem;">You</span>
                 <div class="fw-bolder text-n-dark-blue text-break d-inline-block mx-3 L0-ReplyingTo-{{KX}}-{{KX}}">{{X.user.username}}</div>
                 <div class="text-n-grayish-Blue text-break d-inline-block mx-3" am-time-ago="X.createdAt"></div> 
@@ -83,9 +87,9 @@
                     </div>
               </div>
               <div class="col-12 col-sm-6 text-center">
-                <button class="btn btn-n-white" ng-show="X.user.username == currentUser.username" ng-click="Delete('L0',KX,KX)"><div class="text-danger fw-bold"><img src="images/icon-delete.svg"  alt="delete"/> Delete</div></button>
-                <button class="btn btn-n-white" ng-show="X.user.username == currentUser.username" ng-click="Edit('L0',KX,KX)"><div class="text-n-button-reply fw-bold"><img src="images/icon-edit.svg"  alt="edit"/> Edit</div></button>
-                <button class="btn btn-n-white" ng-show="X.user.username != currentUser.username" ng-click="Reply('L0',KX,KX)"><div class="text-n-button-reply fw-bold"><img src="images/icon-reply.svg" alt="reply"/> Reply</div></button>
+                <button class="btn btn-n-white" ng-show="X.user.username == currentUser.username" ng-click="Delete('L0',KX,KX)"><div class="text-danger fw-bold"><img src="images/icon-delete.svg"  alt="delete-{{KX}}-{{KX}}"/> Delete</div></button>
+                <button class="btn btn-n-white" ng-show="X.user.username == currentUser.username" ng-click="Edit('L0',KX,KX)"><div class="text-n-button-reply fw-bold"><img src="images/icon-edit.svg"  alt="edit-{{KX}}-{{KX}}"/> Edit</div></button>
+                <button class="btn btn-n-white" ng-show="X.user.username != currentUser.username" ng-click="Reply('L0',KX,KX)"><div class="text-n-button-reply fw-bold"><img src="images/icon-reply.svg" alt="reply-{{KX}}-{{KX}}"/> Reply</div></button>
               </div>
             </div>
           </div>
@@ -107,7 +111,7 @@
               <!-- User -->
               <div class="card-title row row-cols-auto my-2 ">
                 <div class="position-relative">
-                    <img  ng-src="{{Y.user.image.png}}" width="35" height="35" alt="user"/>
+                    <img  ng-src="{{Y.user.image.png}}" width="35" height="35" alt="user-{{KX}}-{{KY}}"/>
                     <span class="position-absolute top-10 start-20 translate-middle fw-bolder text-n-white bg-n-button-reply rounded-circle p-1" ng-show="Y.user.username == currentUser.username" style="font-size: 0.6rem;">You</span>
                     <div class="fw-bolder text-n-dark-blue text-break d-inline-block mx-3 L1-ReplyingTo-{{KX}}-{{KY}}">{{Y.user.username}}</div>
                     <div class="text-n-grayish-Blue text-break d-inline-block mx-3" am-time-ago="Y.createdAt"></div> 
@@ -144,9 +148,9 @@
                         </div>
                   </div>
                   <div class="col-12 col-sm-6 text-center">
-                          <button class="btn btn-n-white"  ng-show="Y.user.username == currentUser.username" ng-click="Delete('L1',KX,KY)"><div class="text-danger fw-bold"><img src="images/icon-delete.svg" alt="delete"/> Delete</div></button>
-                          <button class="btn btn-n-white" ng-show="Y.user.username == currentUser.username" ng-click="Edit('L1',KX,KY)"><div class="text-n-button-reply fw-bold"><img src="images/icon-edit.svg" alt="edit"/> Edit</div></button>
-                          <button class="btn btn-n-white" ng-show="Y.user.username != currentUser.username" ng-click="Reply('L1',KX,KY)"><div class="text-n-button-reply fw-bold"><img src="images/icon-reply.svg" alt="reply"/> Reply</div></button>
+                          <button class="btn btn-n-white"  ng-show="Y.user.username == currentUser.username" ng-click="Delete('L1',KX,KY)"><div class="text-danger fw-bold"><img src="images/icon-delete.svg" alt="delete-{{KX}}-{{KY}}"/> Delete</div></button>
+                          <button class="btn btn-n-white" ng-show="Y.user.username == currentUser.username" ng-click="Edit('L1',KX,KY)"><div class="text-n-button-reply fw-bold"><img src="images/icon-edit.svg" alt="edit-{{KX}}-{{KY}}"/> Edit</div></button>
+                          <button class="btn btn-n-white" ng-show="Y.user.username != currentUser.username" ng-click="Reply('L1',KX,KY)"><div class="text-n-button-reply fw-bold"><img src="images/icon-reply.svg" alt="reply-{{KX}}-{{KY}}"/> Reply</div></button>
                   </div>
                 </div>
               </div>
@@ -201,8 +205,11 @@
     </div>
   </div>
 
+  </main>
+
 
   <!-- Footer -->
+  <footer>
   <div class="row row-cols-auto my-1 justify-content-center">
     <div class="">
       Challenge by <a href="https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9" target="_blank">Frontend Mentor</a>.
@@ -211,6 +218,7 @@
       Coded by <a href="https://github.com/GCO44/challenge">GCO44</a>.
     </div>
   </div>
+ </footer>
      
 
 
