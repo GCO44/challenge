@@ -34,8 +34,6 @@ iscm.controller('iscm', ['$scope', '$FactoryIndex', function($scope, $FactoryInd
         return $data;   
     }
 
-    $scope.domEl('.header-iscm').addClass('d-none');
-
 /* Level option send */
     $scope.Reply = function($LEVEL,$KX,$KY){
         $scope.domEl('.'+$LEVEL+'-CardComment-'+$KX+'-'+$KY).removeClass('d-none');
@@ -112,6 +110,7 @@ iscm.controller('iscm', ['$scope', '$FactoryIndex', function($scope, $FactoryInd
             /* READ JSON INIT */    
             $FactoryIndex.RequestJson('data.json').then(
                 function successCallback(response){
+                    $scope.domEl('.header-iscm').addClass('d-none');
                     $scope.currentUser = response.data.currentUser;
                     $scope.comments = $scope.SortFilter(response.data.comments);
                     $scope.LocalStorage();
