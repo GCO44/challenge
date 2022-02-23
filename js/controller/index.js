@@ -108,7 +108,7 @@ iscm.controller('iscm', ['$scope', '$FactoryIndex', function($scope, $FactoryInd
 
     $scope.load = function(){
             /* READ JSON INIT */    
-            $FactoryIndex.RequestJson('./data.json').then(
+            $FactoryIndex.RequestJson('data.json').then(
                 function successCallback(response){
                     $scope.currentUser = response.data.currentUser;
                     $scope.comments = $scope.SortFilter(response.data.comments);
