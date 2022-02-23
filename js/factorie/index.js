@@ -5,7 +5,7 @@ iscm.factory('$FactoryIndex',['$http',function($http){
             {
                 return $http({
                     url: url
-                    ,method: "POST"
+                    ,method: "GET"
                     ,data: data
                     ,transformRequest: angular.identity
                     ,headers: {'Content-Type': undefined}
