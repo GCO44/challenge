@@ -62,7 +62,7 @@
           <div class="card-text my-2 L0-CardComment-{{KX}}-{{KX}} d-none">
             <div class="row">
               <div class="form-floating">
-                <textarea class="form-control border border-p-light-grayish-blue fw-lighter L0-Textarea-{{KX}}-{{KX}}" placeholder="Add a comment..." ng-model="L0_Reply[KX_KX]" ng-init="L0_Reply[KX_KX]=''"></textarea>
+                <textarea class="form-control border border-p-light-grayish-blue fw-lighter L0-Textarea-{{KX}}-{{KX}}" placeholder="Add a comment..."></textarea>
                 <label class="text-n-grayish-Blue">Add a comment...</label>
               </div>
               <div class="d-flex justify-content-end">
@@ -123,7 +123,7 @@
               <div class="card-text my-2 L1-CardComment-{{KX}}-{{KY}} d-none">
                 <div class="row">
                   <div class="form-floating">
-                    <textarea class="form-control border border-p-light-grayish-blue fw-lighter L1-Textarea-{{KX}}-{{KY}}" placeholder="{{L1_label}}" ng-model="L1_Reply[KX_KY]" ng-init="L1_Reply[KX_KY]=''"></textarea>
+                    <textarea class="form-control border border-p-light-grayish-blue fw-lighter L1-Textarea-{{KX}}-{{KY}}" placeholder="{{L1_label}}"></textarea>
                     <label class="text-n-grayish-Blue"><span ng-if="Y.user.username == currentUser.username ? L1_label='Change your comment...':L1_label='Add a comment...'">{{L1_label}}</span></label>
                   </div>
                   <div class="d-flex justify-content-end">
@@ -194,8 +194,8 @@
           <p class="text-n-grayish-Blue">Are you sure you want to delete this comment ? This will remove the comment and can't be undone</p> 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO, CANCEL</button>
-          <button type="button" class="btn btn-danger" ng-click="ConfirmDelete()">YES, DELETE</button>
+          <button class="btn btn-secondary" data-bs-dismiss="modal">NO, CANCEL</button>
+          <button class="btn btn-danger" ng-click="ConfirmDelete()">YES, DELETE</button>
         </div>
       </div>
     </div>
