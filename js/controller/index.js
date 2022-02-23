@@ -2,6 +2,7 @@ iscm.controller('iscm', ['$scope', '$FactoryIndex', function($scope, $FactoryInd
 
 /* for the Developpement ==> info ID connect user */
     $scope.CurrentUserId = 4;
+    
 
 /* bootstrap modal management  */
     var myModal = new bootstrap.Modal(document.getElementById('modalDelete'), {keyboard: false})
@@ -33,6 +34,7 @@ iscm.controller('iscm', ['$scope', '$FactoryIndex', function($scope, $FactoryInd
         return $data;   
     }
 
+    $scope.domEl('.header-iscm').addClass('d-none');
 
 /* Level option send */
     $scope.Reply = function($LEVEL,$KX,$KY){
